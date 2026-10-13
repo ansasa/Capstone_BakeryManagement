@@ -1,0 +1,2 @@
+@model Order
+<h1>Payment</h1><div class="form-card"><p>Order <strong>#@Model.Id</strong></p><p>Amount due: <strong>₹@Model.Total.ToString("0.00")</strong></p><p class="notice">Demo only: this page does not collect money. Connect a payment provider such as Razorpay or Stripe on the server before accepting real payments.</p><form asp-action="DemoPay" method="post"><input type="hidden" name="id" value="@Model.Id"/><button class="btn">Continue with demo checkout</button></form><p><a asp-action="Receipt" asp-route-id="@Model.Id">Skip to order receipt</a></p></div>

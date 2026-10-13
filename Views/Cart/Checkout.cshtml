@@ -1,0 +1,2 @@
+@model Order
+<h1>Delivery details</h1><p>Enter your details to create the order.</p><form asp-action="Checkout" method="post" class="form-card"><label>Full name</label><input asp-for="CustomerName"/><span asp-validation-for="CustomerName"></span><label>Email</label><input asp-for="Email"/><span asp-validation-for="Email"></span><label>Delivery address</label><textarea asp-for="DeliveryAddress"></textarea><span asp-validation-for="DeliveryAddress"></span><button class="btn">Place order & continue to payment</button></form>

@@ -1,0 +1,2 @@
+@model IEnumerable<Order>
+<h1>Customer orders</h1><table><thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Payment</th><th>Receipt</th></tr></thead><tbody>@foreach(var o in Model){<tr><td>#@o.Id</td><td>@o.CustomerName</td><td>@o.CreatedAt.ToLocalTime().ToString("g")</td><td>₹@o.Total</td><td>@o.PaymentStatus</td><td><a asp-controller="Cart" asp-action="Receipt" asp-route-id="@o.Id">Print</a></td></tr>}</tbody></table>
