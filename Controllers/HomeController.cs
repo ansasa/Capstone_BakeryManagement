@@ -1,3 +1,5 @@
+// CI/CD pipeline test - verify GitHub Actions on pull requests.
+
 using BakeryManagement.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
