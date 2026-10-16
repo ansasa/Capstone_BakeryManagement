@@ -22,11 +22,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
-      # 2. Validate HTML
+      
+      # 2. Validate standalone HTML files, if present
+      - name: Check for HTML files
+        id: html-files
+        shell: bash
+        run: |
+          if find . -type f -name '*.html' \
+            -not -path './.git/*' | grep -q .; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            echo "No standalone HTML files found. Razor views require separate validation."
+          fi
+
       - name: Validate HTML
+        if: steps.html-files.outputs.found == 'true'
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
           root: .
+
 
       # 3. Configure Docker Buildx
       - name: Set up Docker Buildx
